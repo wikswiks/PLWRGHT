@@ -1,18 +1,27 @@
 import { test, expect } from '@playwright/test';
-import { url } from 'inspector';
+
 
 test.describe('User login to Demobankk', () => {
-  test('login with correct credentials', async ({ page }) => {
+  
+  test.only('login with correct credentials', async ({ page }) => {
+
+    //Arrange
 
     const url = 'https://demo-bank.vercel.app/'
-    const user name = 'kakaszek';
+    const userId = 'kakaszek';
+    const userPassword = '12345678';
+    const expectedUserName = "Jan Demobankowy";
+
+    //Act
 
     await page.goto('url');
-    await page.getByTestId('login-input').fill(user name);
-    await page.getByTestId('password-input').fill('Kakaszek');
+    await page.getByTestId('login-input').fill(userId);
+    await page.getByTestId('password-input').fill(userPassword);
     await page.getByTestId('login-button').click();
 
-    await expect(page.getByTestId('user-name')).toHaveText("Jan Demobankowy");
+    //Assert 
+
+    await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
   });
 
 

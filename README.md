@@ -61,3 +61,6 @@ test('test description', async ({ page }) => {
  W sekcji Console wpisujemy:
  $$('#..') ---- w ... nazwa elementu
  na dole pojawi sie wyszukany element
+
+
+ Jak chcemy dodac wartosc CONST w ciągach tekstowych, trzeba tekst najpierw dac w `....`, inaczej nie odczyta zmiany na CONST
