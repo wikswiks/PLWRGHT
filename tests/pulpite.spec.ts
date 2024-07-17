@@ -16,7 +16,7 @@ test.describe('User send money', () => {
 
     //Act
 
-    await page.goto('url');
+    await page.goto(url);
     await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(userPassword);
     await page.getByTestId('login-button').click();

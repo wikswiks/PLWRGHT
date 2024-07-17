@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { url } from 'inspector';
 
 
 test.describe('User login to Demobankk', () => {
   
-  test.only('login with correct credentials', async ({ page }) => {
+  test('login with correct credentials', async ({ page }) => {
 
     //Arrange
 
@@ -14,7 +15,7 @@ test.describe('User login to Demobankk', () => {
 
     //Act
 
-    await page.goto('url');
+    await page.goto(url);
     await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(userPassword);
     await page.getByTestId('login-button').click();
