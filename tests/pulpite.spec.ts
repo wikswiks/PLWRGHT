@@ -3,8 +3,12 @@ import { test, expect } from '@playwright/test';
 test.describe('User send money', () => {
 
 test('quick payment with correct data', async ({ page }) => {
-  await page.goto('https://demo-bank.vercel.app/');
-  await page.getByTestId('login-input').fill('kakaszek');
+
+   const url = 'https://demo-bank.vercel.app/'
+   const user name = 'kakaszek';
+
+  await page.goto(url);
+  await page.getByTestId('login-input').fill(user name);
   await page.getByTestId('password-input').fill('password');
   await page.getByTestId('login-button').click();
   await page.locator('#widget_1_transfer_receiver').selectOption('2');

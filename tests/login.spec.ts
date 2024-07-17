@@ -1,9 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { url } from 'inspector';
 
 test.describe('User login to Demobankk', () => {
   test('login with correct credentials', async ({ page }) => {
-    await page.goto('https://demo-bank.vercel.app/');
-    await page.getByTestId('login-input').fill('Kakaszek');
+
+    const url = 'https://demo-bank.vercel.app/'
+    const user name = 'kakaszek';
+
+    await page.goto('url');
+    await page.getByTestId('login-input').fill(user name);
     await page.getByTestId('password-input').fill('Kakaszek');
     await page.getByTestId('login-button').click();
 
@@ -12,7 +17,7 @@ test.describe('User login to Demobankk', () => {
 
 
   test('login with incorrect credentials', async ({ page }) => {
-    await page.goto('https://demo-bank.vercel.app/');
+    await page.goto(url);
     await page.getByTestId('login-input').fill('test');
     await page.getByTestId('password-input').click();
 
@@ -23,7 +28,7 @@ test.describe('User login to Demobankk', () => {
   });
 
   test('too short password', async ({ page }) => {
-    await page.goto('https://demo-bank.vercel.app/');
+    await page.goto(url);
     await page.getByTestId('login-input').fill('Kakaszek');
     await page.getByTestId('password-input').fill('Kak');
     await page.getByTestId('password-input').blur();
