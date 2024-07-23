@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { url } from "inspector";
 
 test.describe("User login to Demobankk", () => {
-  test("login with correct credentials", async ({ page }) => {
+  
+  test.only("1. login with correct credentials", async ({ page }) => {
     //Arrange
 
     const url = "https://demo-bank.vercel.app/";
@@ -22,24 +22,47 @@ test.describe("User login to Demobankk", () => {
     await expect(page.getByTestId("user-name")).toHaveText(expectedUserName);
   });
 
-  test("login with incorrect credentials", async ({ page }) => {
-    await page.goto(url);
+  test("2. login with incorrect credentials", async ({ page }) => {
+
+     //Arrange
+
+    const url = "https://demo-bank.vercel.app/";
+    const errorLogin = "identyfikator ma min. 8 znaków";
+    
+     //Act
+    
+     await page.goto(url);
     await page.getByTestId("login-input").fill("test");
     await page.getByTestId("password-input").click();
 
+     //Assert
+
+
     await expect(page.getByTestId("error-login-id")).toHaveText(
-      "identyfikator ma min. 8 znaków",
+      errorLogin,
     );
   });
 
-  test("too short password", async ({ page }) => {
+  test("3. too short password", async ({ page }) => {
+
+    //Arrange
+
+    const url = "https://demo-bank.vercel.app/";
+    const userId = "kakaszek";
+    const errorPassword = "hasło ma min. 8 znaków";
+  
+
+      //Act
+
     await page.goto(url);
-    await page.getByTestId("login-input").fill("Kakaszek");
+    await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill("Kak");
-    await page.getByTestId("password-input").blur();
+    await page.getByTestId("password-input").blur(); //blur - jakiekilwiek miejsce na stronie, zeby out of focus
+    
+     //Assert
 
     await expect(page.getByTestId("error-login-password")).toHaveText(
-      "hasło ma min. 8 znaków",
+      errorPassword,
     );
   });
 });

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("User send money BY PHONE", () => {
-  test.only("pulpite.  number pop-up", async ({ page }) => {
+  test("pulpite.  number pop-up", async ({ page }) => {
     //Arrange
 
     const url = "https://demo-bank.vercel.app/";
