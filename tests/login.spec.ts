@@ -2,17 +2,24 @@ import { test, expect } from "@playwright/test";
 
 test.describe("User login to Demobankk", () => {
   
-  test.only("1. login with correct credentials", async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
+    const url = "https://demo-bank.vercel.app/"; 
+    await page.goto(url);
+  
+  
+  })
+  
+  test("1. login with correct credentials", async ({ page }) => {
     //Arrange
 
-    const url = "https://demo-bank.vercel.app/";
+    
     const userId = "kakaszek";
     const userPassword = "12345678";
     const expectedUserName = "Jan Demobankowy";
 
     //Act
 
-    await page.goto(url);
+
     await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill(userPassword);
     await page.getByTestId("login-button").click();
@@ -26,12 +33,12 @@ test.describe("User login to Demobankk", () => {
 
      //Arrange
 
-    const url = "https://demo-bank.vercel.app/";
+
     const errorLogin = "identyfikator ma min. 8 znaków";
     
      //Act
     
-     await page.goto(url);
+
     await page.getByTestId("login-input").fill("test");
     await page.getByTestId("password-input").click();
 
@@ -47,14 +54,14 @@ test.describe("User login to Demobankk", () => {
 
     //Arrange
 
-    const url = "https://demo-bank.vercel.app/";
+  
     const userId = "kakaszek";
     const errorPassword = "hasło ma min. 8 znaków";
   
 
       //Act
 
-    await page.goto(url);
+    
     await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill("Kak");
     await page.getByTestId("password-input").blur(); //blur - jakiekilwiek miejsce na stronie, zeby out of focus
