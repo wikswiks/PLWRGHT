@@ -65,3 +65,6 @@ na dole pojawi sie wyszukany element
 
 Jak chcemy dodac wartosc CONST w ciągach tekstowych, trzeba tekst najpierw dac w `....`, inaczej nie odczyta zmiany na CONST
 $$
+
+beforeEach sie wykonuje w obrębie konkretnego discribe
+npx playwright test tests/login.spec.ts 

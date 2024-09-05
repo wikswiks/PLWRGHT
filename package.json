@@ -2,7 +2,11 @@
   "name": "wiktoria",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test tests",
+     "test:headed": "npx playwright test tests --headed",
+     "test:pulpite": "npx playwright test tests/pulpite.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
