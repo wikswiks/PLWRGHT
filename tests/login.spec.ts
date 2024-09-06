@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { loginData } from "../test.data/test.data";
 
 test.describe("User login to Demobankk", () => {
 
@@ -13,8 +14,8 @@ test.describe("User login to Demobankk", () => {
 
     //Arrange
 
-    const userId = "kakaszek";
-    const userPassword = "12345678";
+    const userId = loginData.userId;
+    const userPassword = loginData.password;
     const expectedUserName = "Jan Demobankowy";
 
     //Act
@@ -50,12 +51,12 @@ test.describe("User login to Demobankk", () => {
 
     //Arrange
 
-    const userId = "kakaszek";
-    const errorPassword = "hasło ma min. 8 znaków";
+    const userId = loginData.userId;
+  const errorPassword = "hasło ma min. 8 znaków";
 
     //Act
 
-    await page.getByTestId("login-input").fill(userId);
+   await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill("Kak");
     await page.getByTestId("password-input").blur(); //blur - jakiekilwiek miejsce na stronie, zeby out of focus
 

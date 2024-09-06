@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
+import { loginData } from "../test.data/test.data";
 
 test.describe("User send money", () => {
 
   test.beforeEach(async ({ page }) => {
     const url = "https://demo-bank.vercel.app/";
-    const userId = "kakaszek";
-    const userPassword = "12345678";
+    const userId = loginData.userId;
+    const userPassword = loginData.password;
     const expectedUserName = "Jan Demobankowy";
     await page.goto(url);
     await page.getByTestId("login-input").fill(userId);
@@ -65,7 +66,7 @@ test("2. send by number pop-up", async ({ page }) => {
   });
 
 
-test.only("3. correct balance after send by number", async ({ page }) => {
+test("3. correct balance after send by number", async ({ page }) => {
 
       //Arrange
   
