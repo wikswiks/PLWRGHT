@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { loginData } from "../test.data/test.data";
+import { LoginPage } from "../pages/login.pages";
 
 test.describe("User login to Demobankk", () => {
 
@@ -17,12 +18,17 @@ test.describe("User login to Demobankk", () => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
     const expectedUserName = "Jan Demobankowy";
+    const loginPage = new LoginPage(page);
 
     //Act
+    //const loginPage = new LoginPage(page);
+    await loginPage.loginInput.fill(userId);
+    await loginPage.passwordInput.fill(userPassword);
+    await loginPage.loginButton.click();
 
-    await page.getByTestId("login-input").fill(userId);
-    await page.getByTestId("password-input").fill(userPassword);
-    await page.getByTestId("login-button").click();
+    //await page.getByTestId("login-input").fill(userId);
+    //await page.getByTestId("password-input").fill(userPassword);
+    //await page.getByTestId("login-button").click();
 
     //Assert
 

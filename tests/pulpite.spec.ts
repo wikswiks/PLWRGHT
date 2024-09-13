@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { loginData } from "../test.data/test.data";
+import { LoginPage } from "../pages/login.pages";
 
 test.describe("User send money", () => {
 
@@ -7,10 +8,14 @@ test.describe("User send money", () => {
     const url = "https://demo-bank.vercel.app/";
     const userId = loginData.userId;
     const userPassword = loginData.password;
+    const loginPage = new LoginPage(page);
     await page.goto(url);
-    await page.getByTestId("login-input").fill(userId);
-    await page.getByTestId("password-input").fill(userPassword);
-    await page.getByTestId("login-button").click();
+    await loginPage.loginInput.fill(userId);
+    await loginPage.passwordInput.fill(userPassword);
+    await loginPage.loginButton.click();
+    ///await page.getByTestId("login-input").fill(userId);
+    ///await page.getByTestId("password-input").fill(userPassword);
+    ///await page.getByTestId("login-button").click();
 
   })
 
