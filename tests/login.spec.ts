@@ -21,7 +21,7 @@ test.describe("User login to Demobankk", () => {
     const loginPage = new LoginPage(page);
 
     //Act
-    //const loginPage = new LoginPage(page);
+
     await loginPage.loginInput.fill(userId);
     await loginPage.passwordInput.fill(userPassword);
     await loginPage.loginButton.click();
@@ -38,19 +38,21 @@ test.describe("User login to Demobankk", () => {
   test("2. login with incorrect credentials", async ({ page }) => {
 
     //Arrange
-
-    const errorLogin = "identyfikator ma min. 8 znaków";
-
+    
+    const incorrectUserId = "test";
+    const expectedErrorMessage = "identyfikator ma min. 8 znaków";
+    
     //Act
-
-    await page.getByTestId("login-input").fill("test");
-    await page.getByTestId("password-input").click();
+    const loginPage = new LoginPage(page);
+    await loginPage.loginInput.fill(incorrectUserId);
+    await loginPage.passwordInput.click();
+   
+    //await page.getByTestId("login-input").fill(incorrectUserId);
+    //await page.getByTestId("password-input").click();
 
     //Assert
 
-    await expect(page.getByTestId("error-login-id")).toHaveText(
-      errorLogin,
-    );
+    await expect(loginPage.loginError).toHaveText(expectedErrorMessage);
   });
 
   test("3. too short password", async ({ page }) => {
