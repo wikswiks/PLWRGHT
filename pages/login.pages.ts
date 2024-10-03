@@ -9,5 +9,7 @@ export class LoginPage {
     loginButton = this.page.getByTestId("login-button");
     loginErrorLocator = this.page.getByTestId("error-login-id");
     incorrectPassword = this.page.getByTestId("password-input");
-    errorPasswordLocator = this.page.getByTestId("error-login-password")
-}
+    errorPasswordLocator = this.page.getByTestId("error-login-password");
+    userName = this.page.getByTestId("user-name");
+};
+

@@ -32,7 +32,7 @@ test.describe("User login to Demobankk", () => {
 
     //Assert
 
-    await expect(page.getByTestId("user-name")).toHaveText(expectedUserName);
+    await expect(loginPage.userName).toHaveText(expectedUserName);
   });
 
   test("2. login with incorrect credentials", async ({ page }) => {

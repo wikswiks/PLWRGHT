@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { loginData } from "../test.data/test.data";
 import { LoginPage } from "../pages/login.pages";
+import { PulpitePage } from "../pages/pulpite.pages";
 
 test.describe("User send money", () => {
 
@@ -22,25 +23,24 @@ test.describe("User send money", () => {
 
   test("1. quick send with correct data", async ({ page }) => {
     //Arrange
-
+    const pulpitePage = new PulpitePage(page);
     const transferReceiver = "2";
     const transferAmount = "150";
     const transferTitle = "Pizza";
     const expectedReceiverName = "Chuck Demobankowy";
 
     //Act
-
-    await page
-      .locator("#widget_1_transfer_receiver")
-      .selectOption(transferReceiver);
-    await page.locator("#widget_1_transfer_amount").fill(transferAmount);
-    await page.locator("#widget_1_transfer_title").fill(transferTitle);
-    await page.getByRole("button", { name: "wykonaj" }).click();
-    await page.getByTestId("close-button").click();
+   
+    
+    await pulpitePage.elChooseReceiver.selectOption(transferReceiver);
+    await pulpitePage.elTransferAmount.fill(transferAmount);
+    await pulpitePage.elTransferTitle.fill(transferTitle);
+    await pulpitePage.wykonajButton.click();
+    await pulpitePage.closeButton.click();
 
     //Assert
 
-    await expect(page.getByTestId("message-text")).toHaveText(
+    await expect(pulpitePage.messageText).toHaveText(
       `Przelew wykonany! ${expectedReceiverName} - ${transferAmount},00PLN - ${transferTitle}`,
     );
   });
