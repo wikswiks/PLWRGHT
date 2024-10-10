@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { loginData } from "../test.data/test.data";
 import { text } from "stream/consumers";
 import { LoginPage } from "../pages/login.pages";
+import { PaymentsPage } from "../pages/payments.pages";
 
 test.describe("Payment", () => {
 
@@ -25,6 +26,7 @@ test.describe("Payment", () => {
 
         //Arrange
 
+        const paymentsPage = new PaymentsPage(page);
         const transferReceiver = 'Jan Nowak';
         const transferAccount = '12 3456 7891 2345 6789 1234 56781';
         const transferAmount = '222';
@@ -33,11 +35,11 @@ test.describe("Payment", () => {
         //Act
 
 
-        await page.getByTestId('transfer_receiver').fill(transferReceiver);
-        await page.getByTestId('form_account_to').fill(transferAccount);
-        await page.getByTestId('form_amount').fill(transferAmount);
-        await page.getByRole('button', { name: 'wykonaj przelew' }).click();
-        await page.getByTestId('close-button').click();
+        await paymentsPage.getByTestId.elTransferReceiver.fill(transferReceiver);
+        await paymentsPage.getByTestId.formAccountTo.fill(transferAccount);
+        await paymentsPage.getByTestId.formAmount.fill(transferAmount);
+        await paymentsPage.getByRole.wykonajButton.click();
+        await paymentsPage.getByTestId.closeButton.click();
 
 
         //Assert
