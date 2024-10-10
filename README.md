@@ -1,13 +1,11 @@
 # Test Automation training form jaktestowac.pl
+Based on this course, I write my tests and don't just copy code from the repository =))
 
 ## Links
 
 - course https://jaktestowac.pl/course/playwright-wprowadzenie/
 - test site
   https://demo-bank.vercel.app/  
-  If link broken check first lesson for update:
-  https://jaktestowac.pl/lesson/pw1s01l01/
-  -code repository https://github.com/jaktestowac/playwright_automatyzacja_wprowadzenie?tab=readme-ov-file
 
 ## Commands
 
