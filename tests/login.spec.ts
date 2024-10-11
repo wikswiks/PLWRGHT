@@ -26,9 +26,6 @@ test.describe("User login to Demobankk", () => {
     await loginPage.passwordInput.fill(userPassword);
     await loginPage.loginButton.click();
 
-    //await page.getByTestId("login-input").fill(userId);
-    //await page.getByTestId("password-input").fill(userPassword);
-    //await page.getByTestId("login-button").click();
 
     //Assert
 
@@ -47,9 +44,7 @@ test.describe("User login to Demobankk", () => {
     await loginPage.loginInput.fill(incorrectUserId);
     await loginPage.passwordInput.click();
    
-    //await page.getByTestId("login-input").fill(incorrectUserId);
-    //await page.getByTestId("password-input").click();
-
+ 
     //Assert
 
     await expect(loginPage.loginErrorLocator).toHaveText(expectedErrorMessage);
@@ -65,7 +60,6 @@ test.describe("User login to Demobankk", () => {
 
     //Act
     await loginPage.loginInput.fill(userId);
-    //await page.getByTestId("login-input").fill(userId);
     await loginPage.passwordInput.fill(incorrectPassword);
     await loginPage.passwordInput.blur(); //blur - jakiekilwiek miejsce na stronie, zeby out of focus
 
